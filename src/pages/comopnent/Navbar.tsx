@@ -1,52 +1,54 @@
-import Link from 'next/link';
-import { useState } from 'react';
-import { BiMenu } from 'react-icons/bi';
-import { AiOutlineClose } from 'react-icons/ai';
+import { useState } from "react";
+import Link from "next/link";
+
+import { BiMenu } from "react-icons/bi";
+import { AiOutlineClose } from "react-icons/ai";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
   return (
     <>
       <div className="navbar">
-        <div className="navbar_logo">next-map</div>
-        <div className="navbar_list">
-          <Link href="/stores" className="navbar_list--item">
+        <Link href="/" className="navbar__logo">
+          nextmap
+        </Link>
+        <div className="navbar__list">
+          <Link href="/stores" className="navbar__list--item">
             맛집 목록
           </Link>
-          <Link href="/stores/new" className="navbar_list--item">
+          <Link href="/stores/new" className="navbar__list--item">
             맛집 등록
           </Link>
-          <Link href="/users/likes" className="navbar_list--item">
+          <Link href="/users/likes" className="navbar__list--item">
             찜한 가게
           </Link>
-          <Link href="/users/login" className="navbar_list--item">
+          <Link href="/users/login" className="navbar__list--item">
             로그인
           </Link>
         </div>
-        {/* 모바일버전 */}
-        <div className="navbar_button" role="presentation" onClick={() => setIsOpen(val => !val)}>
+        {/* mobile button */}
+        <div
+          role="presentation"
+          className="navbar__button"
+          onClick={() => setIsOpen((val) => !val)}
+        >
           {isOpen ? <AiOutlineClose /> : <BiMenu />}
         </div>
       </div>
-      {/* 모바일버전 메뉴 */}
+      {/* mobile navbar */}
       {isOpen && (
-        <div className="navbar-mobile">
-          <div className="navbar_menu-mobile">
-            <Link href="/stores" className="navbar_menu--item-mobile">
+        <div className="navbar--mobile">
+          <div className="navbar__list--mobile">
+            <Link href="/stores" className="navbar__list--item--mobile">
               맛집 목록
             </Link>
-            <Link href="/stores/new" className="navbar_menu--item-mobile">
+            <Link href="/stores/new" className="navbar__list--item--mobile">
               맛집 등록
             </Link>
-            <Link href="/users/likes" className="navbar_menu--item-mobile">
+            <Link href="/users/likes" className="navbar__list--item--mobile">
               찜한 가게
             </Link>
-            <Link href="/users/login" className="navbar_menu--item-mobile">
+            <Link href="/users/login" className="navbar__list--item--mobile">
               로그인
             </Link>
           </div>

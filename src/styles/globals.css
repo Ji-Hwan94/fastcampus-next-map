@@ -1,86 +1,59 @@
-@import 'tailwindcss/preflight';
+@import "tailwindcss";
+
+@tailwind base;
+@tailwind components;
 @tailwind utilities;
 
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  height: 52px;
-  background-color: #fff;
-  padding: 0 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  @apply flex justify-between items-center fixed w-full top-0 h-[52px] shadow-sm bg-white;
 }
 
-.navbar_logo {
-  font-size: 20px;
-  font-weight: 600;
-  color: #000;
-  cursor: pointer;
-  padding: 0 12px;
+.navbar__logo {
+  @apply text-blue-800 text-lg font-semibold cursor-pointer px-[18px] py-0;
 }
 
-.navbar_list {
-  padding: 0px 18px;
-  display: flex;
-  gap: 12px;
-  align-items: center;
+.navbar__list {
+  @apply flex gap-3 items-center px-[18px] py-0;
 }
 
-.navbar_button {
-  display: none;
+.navbar__button {
+  @apply hidden cursor-pointer;
 }
 
-.navbar_list--item {
-  font-size: 14px;
-  font-weight: 500;
-  color: #333;
-  cursor: pointer;
-  padding: 0 12px;
+.navbar__list--item {
+  @apply cursor-pointer;
+}
+
+.navbar__list--item:hover {
+  @apply text-gray-600;
+}
+
+.layout {
+  @apply pt-[52px];
 }
 
 @media only screen and (max-width: 600px) {
-  .navbar-mobile {
-    width: 100%;
-    position: fixed;
-    top: 52px;
-    background-color: darkblue;
-    color: white;
-    height: 100vh;
+  .navbar--mobile {
+    @apply fixed w-full top-[52px] bg-blue-800 text-white h-screen;
   }
 
-  .navbar_menu-mobile {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    padding: 0 18px;
-    gap: 16px;
+  .navbar__list {
+    @apply hidden;
   }
 
-  .navbar_list {
-    padding: 0px 18px;
-    display: flex;
-    gap: 12px;
-    align-items: center;
+  .navbar__button {
+    @apply block px-[18px] py-0;
   }
 
-  .navbar_button {
-    display: block;
-    padding: 0 18px;
+  .navbar__list--item--mobile {
+    @apply cursor-pointer;
   }
 
-  .navbar_menu--item-mobile:hover {
-    color: darkgray;
-  }
+  .navbar__list--item--mobile:hover {
+    @apply text-gray-600;
+  } 
 
-  .navbar_menu--item-mobile {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: center;
-    gap: 12px;
-    position: fixed;
+  .navbar__list--mobile {
+    @apply flex flex-col gap-4 items-start p-[24px] px-[18px];
   }
 }
